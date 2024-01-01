@@ -19,7 +19,7 @@ The goal is to Develop a Jenkins pipeline ('nautilus-webapp-job') to deploy a ne
 1. **I Installed The Necessary Plugins on Jenkins:**
 
 Install required plugins: SSH, Git, and Pipeline.
-![image1](./images/dockerimagetransfer1.png)
+![image1](./images/pipelinetask1.png)
 
 2. **I Added The Slave Node 'Storage Server':**
 
@@ -28,21 +28,23 @@ Install required plugins: SSH, Git, and Pipeline.
   - Label: ststor01
   - Remote Root Path: /var/www/html
 - I Added permissions by changing ownership of /var/www/html to the server user `chown -R natasha /var/www/html .
-
-
-
-
+![image1](./images/pipelinetask2.png)
+![image1](./images/pipelinetask3.png)
+![image1](./images/pipelinetask4.jpeg)
+![image1](./images/pipelinetask800000.png)
 
 3. **I Created 'nautilus-webapp-job' Pipeline For The Job:**
 
 - I Created a pipeline named 'nautilus-webapp-job'.
 - I Added a string parameter named 'BRANCH'.
 - Configured the Branch to build as ./$BRANCH, based on the value passed before the job runs.
+![image1](./images/pipelinetask5.png)
 
 
 4. **I Wrote The Pipeline Script:**
 
-```pipeline {
+```
+pipeline {
     agent none
 
     stages {
@@ -57,14 +59,22 @@ Install required plugins: SSH, Git, and Pipeline.
                     userRemoteConfigs: [[url: 'http://git.stratos.xfusioncorp.com/sarah/web_app.git']]
                 ]
                 sh 'cp -r /var/www/html/workspace/nautilus-webapp-job/* /var/www/html'
-                // Additional steps...
+                
             }
         }
     }
 }
 ```
+![image1](./images/pipelinetask6.png)
 
 
  5. **I Executed and Tested the Job:**
    - Ran the job with 'master' as the value for BRANCH parameter.
    - Successfully completed the job, fetching content from the Git repository and displaying it on the website.
+![image1](./images/pipelinetask7.png)
+![image1](./images/pipelinetask8.png)
+![image1](./images/pipelinetask9.png)
+![image1](./images/pipelinetask10.png)
+
+
+
